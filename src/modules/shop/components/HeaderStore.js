@@ -56,9 +56,6 @@ class HeaderStore extends React.Component {
               <input type='checkbox' id='drop' onClick={this.onMenu} />
               <ul
                 className='menu mt-2'
-                style={{
-                  width: '100%'
-                }}
               >
                 <li
                   className='active'
