@@ -40,7 +40,7 @@ class HeaderStore extends React.Component {
         className={`main-banner`}
         image={banner}
         style={minimal ? {
-          height: open ? '80%' : 120
+          height: open ? '100%' : 120
         } : {}}
       >
         <header className='header'>
@@ -74,26 +74,14 @@ class HeaderStore extends React.Component {
                   }}
                 ><p>SELL</p></li>
                 <li><p>BLOG</p></li>
-                <li>
-                  <label htmlFor='drop-2' className='toggle'>ACCOUNT <span className='fa fa-angle-down' aria-hidden='true' /> </label>
-                  {/* <p htmlFor='drop-2'>ACCOUNT <span className='fa fa-angle-down' aria-hidden='true' /></p> */}
-                  <input type='checkbox' id='drop-2' />
-                  {user
-                    ? (<ul>
-                      <li
-                        onClick={() => this.goto('/room')}
-                      ><p>ACCOUNT</p></li>
-                      <li
-                        onClick={this.logout}
-                      ><p>LOGOUT</p></li>
-                    </ul>)
-                    : (<ul>
-                      <li
-                        onClick={() => this.goto('/login')}
-                      ><p>LOGIN</p></li>
-                    </ul>)
-                  }
-                </li>
+                {user
+                  ? (<li
+                    onClick={() => this.goto('/room')}
+                  ><p>ACCOUNT</p></li>)
+                  : (<li
+                    onClick={() => this.goto('/login')}
+                  ><p>LOGIN</p></li>)
+                }
               </ul>
             </nav>
           </div>
