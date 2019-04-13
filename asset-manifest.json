@@ -1,0 +1,15 @@
+{
+  "main.css": "/static/css/main.d63f05b5.chunk.css",
+  "main.js": "/static/js/main.8374767b.chunk.js",
+  "runtime~main.js": "/static/js/runtime~main.fdfcfda2.js",
+  "static/css/2.d67c03fe.chunk.css": "/static/css/2.d67c03fe.chunk.css",
+  "static/js/2.6a2860f2.chunk.js": "/static/js/2.6a2860f2.chunk.js",
+  "index.html": "/index.html",
+  "precache-manifest.febb39f12567ba77dc99aaea3dd2646b.js": "/precache-manifest.febb39f12567ba77dc99aaea3dd2646b.js",
+  "service-worker.js": "/service-worker.js",
+  "static/media/chat-icon.png": "/static/media/chat-icon.dab664d9.png",
+  "static/media/main-banner.jpg": "/static/media/main-banner.3d545411.jpg",
+  "static/media/no-image-icon.png": "/static/media/no-image-icon.a4d1b5ae.png",
+  "static/media/no-image.jpg": "/static/media/no-image.6684f358.jpg",
+  "static/media/sign.jpg": "/static/media/sign.cf8b686b.jpg"
+}
