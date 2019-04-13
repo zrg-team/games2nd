@@ -1,12 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import { render } from 'react-dom'
+import Root from './common/hocs/Root'
+import store, { history } from './common/store'
+import registerServiceWorker from './registerServiceWorker'
+import './assets/scss/material-kit-react.css'
+import './common/utils/firebase'
+import './common/styles/app.css'
+import './common/styles/transition.css'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+render(
+  <Root {...store} history={history} />,
+  document.getElementById('root')
+)
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+registerServiceWorker()
