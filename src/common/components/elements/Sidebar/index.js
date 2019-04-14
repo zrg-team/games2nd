@@ -9,8 +9,7 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText,
-  Avatar
+  ListItemText
 } from '@material-ui/core'
 import sidebarStyle from './styles'
 

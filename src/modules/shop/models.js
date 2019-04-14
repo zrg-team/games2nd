@@ -5,7 +5,7 @@ export const PLATFORMS = {
   xboxone: 'Xbox One',
   playstation3: 'Playstation 3',
   playstation4: 'Playstation 4',
-  switch: 'Nintendo Witch'
+  switch: 'Nintendo Switch'
 }
 
 export const PRICE_RANGES = [

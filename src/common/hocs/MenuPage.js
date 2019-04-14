@@ -95,9 +95,8 @@ class MenuPage extends React.Component {
       <div className={classes.wrapper}>
         <Sidebar
           routes={SIDDE_BARS}
-          logoText={'GAMES ADMIN'}
+          logoText={'GAMES2ND'}
           logo={logo}
-          // image={image}
           handleDrawerToggle={this.handleDrawerToggle}
           open={this.state.mobileOpen}
           color='blue'
