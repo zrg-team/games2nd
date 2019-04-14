@@ -52,6 +52,9 @@ const appStyle = theme => ({
   fullContainer: {
     width: '100%',
     height: '100%'
+  },
+  cardHeader: {
+    marginTop: -20
   }
 })
 

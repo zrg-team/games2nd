@@ -7,7 +7,8 @@ import {
   Dashboard,
   ExitToApp,
   PeopleTwoTone,
-  Store
+  Store,
+  Keyboard
 } from '@material-ui/icons'
 import { CSSTransitionGroup } from 'react-transition-group'
 import { signOut } from '../utils/authentication'
@@ -29,26 +30,32 @@ const SIDDE_BARS = [
     icon: PeopleTwoTone
   },
   {
-    path: '/sell',
-    sidebarName: 'Sell',
-    navbarName: 'Sell Games',
-    icon: Store
-  },
-  {
-    path: '/public',
-    sidebarName: 'Public',
-    navbarName: 'Material Public',
-    icon: Public
-  },
-  {
     path: '/room',
     sidebarName: 'Messages',
     navbarName: 'Material Dashboard',
     icon: Dashboard
   },
   {
+    path: '/sell',
+    sidebarName: 'Sell',
+    navbarName: 'Sell Games',
+    icon: Store
+  },
+  {
+    path: '/blog-add',
+    sidebarName: 'Write Blog',
+    navbarName: 'Material Public',
+    icon: Keyboard
+  },
+  {
+    path: '/public',
+    sidebarName: 'Public Chat',
+    navbarName: 'Material Public',
+    icon: Public
+  },
+  {
     path: '/friend',
-    sidebarName: 'Friend',
+    sidebarName: 'Find Friend',
     navbarName: 'Material PeopleTwoTone',
     icon: PeopleTwoTone
   },

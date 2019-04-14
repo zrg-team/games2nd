@@ -36,23 +36,6 @@ function PaymentForm ({
       </Typography>
       <Grid container spacing={24}>
         <Grid justify='center' container xs={12}>
-          {/* <Grid item xs={5} spacing={12}>
-            <Card
-              style={{
-                maxWidth: 300
-              }}
-            >
-              <CardMedia
-                component='img'
-                alt='Contemplative Reptile'
-                style={{
-                  objectFit: 'cover'
-                }}
-                image={banner || require('../../../assets/images/no-image.jpg')}
-                title='Contemplative Reptile'
-              />
-            </Card>
-          </Grid> */}
           <Grid item xs={5} spacing={12}>
             <Card
               style={{

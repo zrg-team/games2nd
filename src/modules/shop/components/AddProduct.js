@@ -16,7 +16,8 @@ import Lottie from '../../../libraries/Lottie'
 
 const styles = theme => ({
   cardHeader: {
-    marginBottom: 10
+    marginBottom: 10,
+    marginTop: -20
   },
   appBar: {
     position: 'relative'
@@ -26,7 +27,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2,
     [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
-      width: 600,
+      maxWidth: 600,
       marginLeft: 'auto',
       marginRight: 'auto'
     }
@@ -36,7 +37,7 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 3,
     padding: theme.spacing.unit * 2,
     [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
-      marginTop: theme.spacing.unit * 6,
+      marginTop: theme.spacing.unit * 4,
       marginBottom: theme.spacing.unit * 6,
       padding: theme.spacing.unit * 3,
       paddingTop: 0

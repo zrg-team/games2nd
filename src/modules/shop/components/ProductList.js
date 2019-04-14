@@ -43,7 +43,7 @@ function ProductItem ({ item }) {
         >
           <img
             style={{
-              objectFit: 'cover'
+              objectFit: 'scale-down'
             }}
             src={item.banner}
             className='img-fluid product-image-sm'
@@ -96,11 +96,13 @@ class ProductList extends React.Component {
     const { page } = this.state
     const { getProducts, location } = this.props
     if (location && location.state && Object.keys(location.state).length) {
+      this.scrollParentRef = document.getElementById('root')
       return this.setState({
         ready: true
       })
     }
     const result = await getProducts(page, LIMIT)
+    this.scrollParentRef = document.getElementById('root')
     this.pages[2] = result
     this.setState({
       ready: true
@@ -191,9 +193,8 @@ class ProductList extends React.Component {
           ? (
             <InfiniteScroll
               pageStart={0}
-              loadMore={end
-                ? () => {} : this.onLoadMore}
-              hasMore
+              loadMore={this.onLoadMore}
+              hasMore={!end}
               style={{
                 width: '100%',
                 display: 'flex',
@@ -201,6 +202,7 @@ class ProductList extends React.Component {
               }}
               loader={null}
               useWindow={false}
+              getScrollParent={() => this.scrollParentRef}
             >
               {searchResult
                 ? searchResult.map(this.renderItem)

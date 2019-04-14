@@ -1,9 +1,9 @@
 import React from 'react'
 import MenuPage from '../common/hocs/MenuPage'
-import AddProduct from '../modules/shop/containers/AddProduct'
+import AddBlog from '../modules/publics/containers/AddBlog'
 import GridContainer from '../libraries/Grid/GridContainer'
 
-class AddProductPage extends React.Component {
+class AddBlogPage extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -13,11 +13,11 @@ class AddProductPage extends React.Component {
     return (
       <MenuPage marginTop>
         <GridContainer justify='center'>
-          <AddProduct color='primary' match={this.props.match} />
+          <AddBlog color='primary' match={this.props.match} />
         </GridContainer>
       </MenuPage>
     )
   }
 }
 
-export default AddProductPage
+export default AddBlogPage

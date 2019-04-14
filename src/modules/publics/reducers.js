@@ -3,7 +3,8 @@ import * as actions from './actions'
 
 const defaultState = {
   messages: [],
-  offset: 0
+  offset: 0,
+  blogs: []
 }
 
 const handlers = {
@@ -16,6 +17,17 @@ const handlers = {
         ...action.payload.data
       ]
     }
+  }),
+  [actions.setBlogs]: (state, action) => ({
+    ...state,
+    blogs: action.payload
+  }),
+  [actions.appendBlogs]: (state, action) => ({
+    ...state,
+    blogs: [
+      ...action.payload,
+      ...state.blogs
+    ]
   })
 }
 

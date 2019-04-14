@@ -73,7 +73,11 @@ class HeaderStore extends React.Component {
                     : this.goto('/login')
                   }}
                 ><p>SELL</p></li>
-                <li><p>BLOG</p></li>
+                <li
+                  onClick={() => {
+                    this.goto('/blogs')
+                  }}
+                ><p>BLOG</p></li>
                 {user
                   ? (<li
                     onClick={() => this.goto('/room')}
@@ -86,7 +90,15 @@ class HeaderStore extends React.Component {
             </nav>
           </div>
         </header>
-        {!minimal && <div className='banner-info'>
+        {!minimal && <div
+          className='banner-info'
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            flexDirection: 'column',
+            paddingBottom: 120
+          }}
+        >
           <p>Trending of the week</p>
           <h3 className='mb-4'>{
             presents.trendingOfWeek

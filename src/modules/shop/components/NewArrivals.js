@@ -41,7 +41,7 @@ function ProductItem ({ item }) {
         >
           <img
             style={{
-              objectFit: 'cover'
+              objectFit: 'scale-down'
             }}
             src={item.banner}
             className='img-fluid product-image-lg'
