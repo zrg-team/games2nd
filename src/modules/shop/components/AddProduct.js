@@ -9,14 +9,16 @@ import StepLabel from '@material-ui/core/StepLabel'
 import Button from '../../../libraries/CustomButtons/Button'
 import InformationForm from './InformationForm'
 import GameInfoForm from './GameInfoForm'
-import { replace } from '../../../common/utils/navigation'
+import { replace, next } from '../../../common/utils/navigation'
 import Notification from '../../../common/components/widgets/Notification'
-import { PLATFORMS } from '../models'
+import { PLATFORMS, MAXIMUM_PRODUCT } from '../models'
 import Lottie from '../../../libraries/Lottie'
+import SnackbarContent from '../../../libraries/Snackbar/SnackbarContent'
+import InfoOutlined from '@material-ui/icons/InfoOutlined'
 
 const styles = theme => ({
   cardHeader: {
-    marginBottom: 10,
+    marginBottom: 25,
     marginTop: -20
   },
   appBar: {
@@ -24,8 +26,8 @@ const styles = theme => ({
   },
   layout: {
     width: 'auto',
-    marginLeft: theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit * 2,
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
     [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
       maxWidth: 600,
       marginLeft: 'auto',
@@ -58,7 +60,7 @@ const styles = theme => ({
   }
 })
 
-const steps = ['General', 'Game Information', 'Complete']
+const steps = ['Game', 'Info', 'Done']
 
 class AddProduct extends React.Component {
   constructor (props) {
@@ -267,7 +269,7 @@ class AddProduct extends React.Component {
   };
 
   render () {
-    const { classes } = this.props
+    const { classes, products } = this.props
     const { activeStep } = this.state
 
     return (
@@ -278,32 +280,45 @@ class AddProduct extends React.Component {
               {steps.map(label => (
                 <Step key={label}>
                   <StepLabel>
-                    <p style={{ color: '#FFFFFF' }}>{label}</p>
+                    <p style={{ color: '#FFFFFF', marginBottom: 0 }}>{label}</p>
                   </StepLabel>
                 </Step>
               ))}
             </Stepper>
           </CardHeader>
           <React.Fragment>
-            <React.Fragment>
-              {this.getStepContent(activeStep)}
-              <div className={classes.buttons}>
-                {activeStep !== 0 && activeStep !== 2
-                  ? (
-                    <Button onClick={this.handleBack} className={classes.button}>
-                      Back
-                    </Button>
-                  ) : null}
-                <Button
-                  variant='contained'
-                  color='primary'
-                  onClick={this.handleNext}
-                  className={classes.button}
+            {this.getStepContent(activeStep)}
+            {products >= MAXIMUM_PRODUCT && <SnackbarContent
+              message={
+                <span
+                  onClick={() => {
+                    next('/my-games')
+                  }}
                 >
-                  {activeStep === steps.length - 1 ? 'Confim' : 'Next'}
-                </Button>
-              </div>
-            </React.Fragment>
+                  <b>DANGER ALERT:</b> You've more than {MAXIMUM_PRODUCT} products. Please remove sold products..
+                </span>
+              }
+              close
+              color='danger'
+              icon={InfoOutlined}
+            />}
+            <div className={classes.buttons}>
+              {activeStep !== 0 && activeStep !== 2
+                ? (
+                  <Button onClick={this.handleBack} className={classes.button}>
+                    Back
+                  </Button>
+                ) : null}
+              <Button
+                variant='contained'
+                color='primary'
+                disabled={products >= MAXIMUM_PRODUCT}
+                onClick={this.handleNext}
+                className={classes.button}
+              >
+                {activeStep === steps.length - 1 ? 'Confim' : 'Next'}
+              </Button>
+            </div>
           </React.Fragment>
         </Card>
       </main>

@@ -16,7 +16,10 @@ const mapDispatchToProps = (dispatch, props) => ({
 
 const mapStateToProps = state => {
   return {
-    user: state[MODULE_USER].userInformation
+    user: state[MODULE_USER].userInformation,
+    products: state[MODULE_USER].products
+      ? state[MODULE_USER].products.length || 0
+      : 0
   }
 }
 

@@ -1,6 +1,44 @@
 import firebaseApp from 'firebase/app'
 import firebase from '../../common/utils/firebase'
 
+export async function getProductsByUser (uid) {
+  try {
+    const data = []
+    const result = await firebase.db
+      .collection(`products`)
+      .orderBy('time', 'desc')
+      .where('user', '==', `${uid}`)
+      .get()
+    if (result && !result.empty) {
+      result.forEach((doc) => {
+        const item = doc.data()
+        data.push({
+          ...item,
+          uid: doc.id
+        })
+      })
+      return data
+    }
+    throw new Error('NOT_EXIST')
+  } catch (err) {
+    console.log('err', err)
+    return undefined
+  }
+}
+
+export async function deleteProduct (uid) {
+  try {
+    await firebase.db
+      .collection(`products`)
+      .doc(`${uid}`)
+      .delete()
+    return true
+  } catch (err) {
+    console.log('err', err)
+    return false
+  }
+}
+
 export async function getUser (user) {
   try {
     const result = await firebase.db.collection('users').doc(user.uid).get()

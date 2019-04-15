@@ -14,9 +14,9 @@ class LatestChat extends React.Component {
             <h3 className='my-md-2 my-3'>{gameHighlight.title || ''}</h3>
 
             <ul className='list-unstyled w3layouts-icons clients'>
-              {data.map(item => {
+              {data.map((item, index) => {
                 return (
-                  <li>
+                  <li key={item.uid || item.id || index}>
                     <span className='fa fa-star' />
                   </li>
                 )

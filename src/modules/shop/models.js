@@ -38,3 +38,5 @@ export const PRICE_RANGES = [
 export const LIMIT = 20
 
 export const LIMIT_HOME_PAGE = 9
+
+export const MAXIMUM_PRODUCT = 20

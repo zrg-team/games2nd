@@ -3,7 +3,6 @@ import $ from 'jquery'
 import 'froala-editor/js/froala_editor.pkgd.min.js'
 import 'froala-editor/css/froala_style.min.css'
 import 'froala-editor/css/froala_editor.pkgd.min.css'
-import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import FroalaEditor from 'react-froala-wysiwyg'
 import Card from '@material-ui/core/Card'
@@ -25,15 +24,6 @@ function PaymentForm ({
 }) {
   return (
     <React.Fragment>
-      <Typography
-        variant='h6'
-        gutterBottom
-        style={{
-          marginBottom: 20
-        }}
-      >
-        Game Information
-      </Typography>
       <Grid container spacing={24}>
         <Grid justify='center' container xs={12}>
           <Grid item xs={5} spacing={12}>

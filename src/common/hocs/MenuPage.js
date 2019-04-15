@@ -8,7 +8,8 @@ import {
   ExitToApp,
   PeopleTwoTone,
   Store,
-  Keyboard
+  Style,
+  TableChart
 } from '@material-ui/icons'
 import { CSSTransitionGroup } from 'react-transition-group'
 import { signOut } from '../utils/authentication'
@@ -42,10 +43,16 @@ const SIDDE_BARS = [
     icon: Store
   },
   {
+    path: '/my-games',
+    sidebarName: 'My Games',
+    navbarName: 'My Games',
+    icon: TableChart
+  },
+  {
     path: '/blog-add',
     sidebarName: 'Write Blog',
     navbarName: 'Material Public',
-    icon: Keyboard
+    icon: Style
   },
   {
     path: '/public',

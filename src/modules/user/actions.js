@@ -9,3 +9,4 @@ export const setNotification = createAction(`${MODULE_NAME}_SET_NOTIFICATION`)
 export const pushNotification = createAction(`${MODULE_NAME}_PUSH_NOTIFICATION`)
 
 export const setGuestInformation = createAction(`${MODULE_NAME}_SET_GUEST_INFORMATION`)
+export const setYourProducts = createAction(`${MODULE_NAME}_SET_YOUR_PRODUCT`)

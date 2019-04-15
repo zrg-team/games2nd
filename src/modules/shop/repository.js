@@ -120,7 +120,7 @@ export const addProduct = async (data) => {
   const newRef = firebase.db.collection(`products/`).doc()
   return newRef.set({
     ...data,
-    searchName: `${data}`.trim().toLowerCase().split(' ').join('-'),
+    searchName: `${data.name}`.trim().toLowerCase().split(' ').join('-'),
     time: time.toMillis()
   }).then(response => {
     return true

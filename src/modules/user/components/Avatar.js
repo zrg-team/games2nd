@@ -31,13 +31,15 @@ class Avatar extends React.PureComponent {
             onUploadSuccess={this.handleUploadSuccess}
             onProgress={this.handleProgress}
           >
-          <img 
+          <img
+            alt='avatar'
             className={classes.profile_picture} 
             src={ avatarURL || 'https://gyazo.com/db9f7075f60979081a9da8ec47453bec.png'}
           />
         </CustomUploadButton>
         ) : (
-          <img 
+          <img
+            alt='avatar'
             className={classes.profile_picture} 
             src={ avatarURL || 'https://gyazo.com/db9f7075f60979081a9da8ec47453bec.png'}
           />

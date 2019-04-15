@@ -5,7 +5,8 @@ const defaultState = {
   userInformation: null,
   notifications: [],
   friend: null,
-  guestInformation: null
+  guestInformation: null,
+  products: []
 }
 
 const handlers = {
@@ -34,6 +35,10 @@ const handlers = {
   [actions.setGuestInformation]: (state, action) => ({
     ...state,
     ...{ guestInformation: action.payload }
+  }),
+  [actions.setYourProducts]: (state, action) => ({
+    ...state,
+    products: action.payload
   })
 }
 

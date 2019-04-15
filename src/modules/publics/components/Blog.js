@@ -69,7 +69,11 @@ class Blog extends React.Component {
         <div class='container py-md-3'>
           <h3 class='tittle text-center mb-lg-5 mb-3'> {blog.title}</h3>
           <div class='speak px-lg-5' style={{ overflowX: 'hidden' }}>
-            {reactElement ? reactElement.map(Item => Item) : null}
+            {reactElement
+              ? Array.isArray(reactElement)
+                ? reactElement.map(Item => Item)
+                : reactElement
+              : null}
           </div>
         </div>
       </section>

@@ -85,7 +85,7 @@ function ProductInformation ({ user, product, shop, classes }) {
                   Buy Now
                 </Button>
               </li>
-              <li>
+              <li className='mx-2'>
                 {shop.facebookID
                   ? <Button
                     color='facebook'

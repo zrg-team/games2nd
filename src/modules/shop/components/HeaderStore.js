@@ -1,7 +1,5 @@
 import React from 'react'
-import Parallax from '../../../libraries/Parallax/Parallax'
 import { next, replace } from '../../../common/utils/navigation'
-import banner from '../../../assets/images/main-banner.jpg'
 
 class HeaderStore extends React.Component {
   constructor (props) {
@@ -32,15 +30,14 @@ class HeaderStore extends React.Component {
     replace('/')
   }
   render () {
-    const { open } = this.state
+    // const { open } = this.state
     const { minimal = false, user, presents = {} } = this.props
     return (
-      <Parallax
+      <div
         id='home'
         className={`main-banner`}
-        image={banner}
         style={minimal ? {
-          height: open ? '100%' : 120
+          height: 120
         } : {}}
       >
         <header className='header'>
@@ -123,7 +120,7 @@ class HeaderStore extends React.Component {
             >Shop Now</p>
           </div>
         </div>}
-      </Parallax>
+      </div>
     )
   }
 }

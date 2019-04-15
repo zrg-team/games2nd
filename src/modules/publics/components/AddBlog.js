@@ -21,8 +21,8 @@ const styles = theme => ({
   },
   layout: {
     width: 'auto',
-    marginLeft: theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit * 2,
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
     [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
       maxWidth: 600,
       marginLeft: 'auto',
@@ -131,70 +131,68 @@ class AddBlog extends React.Component {
             <h4>WRITE BLOG</h4>
           </CardHeader>
           <React.Fragment>
-            <React.Fragment>
-              <Grid container spacing={24}>
-                <Grid justify='center' container xs={12}>
-                  <Grid item xs={5} spacing={12}>
-                    <Card
+            <Grid container spacing={24}>
+              <Grid justify='center' container xs={12}>
+                <Grid item xs={5} spacing={12}>
+                  <Card
+                    style={{
+                      maxWidth: 300
+                    }}
+                  >
+                    <CardMedia
+                      component='img'
+                      alt='Contemplative Reptile'
                       style={{
-                        maxWidth: 300
+                        objectFit: 'cover'
                       }}
-                    >
-                      <CardMedia
-                        component='img'
-                        alt='Contemplative Reptile'
-                        style={{
-                          objectFit: 'cover'
-                        }}
-                        image={banner || require('../../../assets/images/no-image.jpg')}
-                        title='Contemplative Reptile'
+                      image={banner || require('../../../assets/images/no-image.jpg')}
+                      title='Contemplative Reptile'
+                    />
+                    <CardContent>
+                      <TextField
+                        required
+                        id='banner'
+                        name='banner'
+                        label='Banner'
+                        value={banner}
+                        error={!!errors['banner']}
+                        onChange={this.onChange}
+                        fullWidth
                       />
-                      <CardContent>
-                        <TextField
-                          required
-                          id='banner'
-                          name='banner'
-                          label='Banner'
-                          value={banner}
-                          error={!!errors['banner']}
-                          onChange={this.onChange}
-                          fullWidth
-                        />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    id='title'
-                    name='title'
-                    label='Title'
-                    value={title}
-                    error={!!errors['title']}
-                    onChange={this.onChange}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <FroalaEditor
-                    tag='textarea'
-                    model={content}
-                    onModelChange={this.handleModelChange}
-                  />
+                    </CardContent>
+                  </Card>
                 </Grid>
               </Grid>
-              <div className={classes.buttons}>
-                <Button
-                  variant='contained'
-                  color='primary'
-                  onClick={this.handleNext}
-                  className={classes.button}
-                >
-                  Confim
-                </Button>
-              </div>
-            </React.Fragment>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  id='title'
+                  name='title'
+                  label='Title'
+                  value={title}
+                  error={!!errors['title']}
+                  onChange={this.onChange}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FroalaEditor
+                  tag='textarea'
+                  model={content}
+                  onModelChange={this.handleModelChange}
+                />
+              </Grid>
+            </Grid>
+            <div className={classes.buttons}>
+              <Button
+                variant='contained'
+                color='primary'
+                onClick={this.handleNext}
+                className={classes.button}
+              >
+                Confim
+              </Button>
+            </div>
           </React.Fragment>
         </Card>
       </main>

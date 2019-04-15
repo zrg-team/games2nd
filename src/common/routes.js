@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router'
 import Page from './hocs/Page'
 import AutheticationPage from './hocs/AutheticationPage'
-// import ComponentsPage from '../pages/Components'
+import ComponentsPage from '../pages/Components'
 import SignUpPage from '../pages/SignUpPage'
 import LoginPage from '../pages/LoginPage'
 import HomePage from '../pages/HomePage'
@@ -17,6 +17,7 @@ import AddProductPage from '../pages/AddProductPage'
 import BlogPage from '../pages/BlogPage'
 import BlogsPage from '../pages/BlogsPage'
 import AddBlogPage from '../pages/AddBlogPage'
+import YourGamePage from '../pages/YourGamePage'
 
 function Authetication (Page, props = {}) {
   return <AutheticationPage Page={Page} {...props} />
@@ -36,7 +37,8 @@ export default class Root extends Component {
         <Route path='/blog-add' render={() => Authetication(AddBlogPage)} />
         <Route path='/message/:uid' render={(props) => Authetication(MessagesPage, props)} />
         <Route path='/sell' render={() => Authetication(AddProductPage)} />
-        {/* <Route path='/components' render={() => <ComponentsPage />} /> */}
+        <Route path='/components' render={() => <ComponentsPage />} />
+        <Route path='/my-games' render={() => Authetication(YourGamePage)} />
         <Route path='/shop' render={() => <ShopingPage />} />
         <Route path='/blog/:uid' render={(props) => <BlogPage {...props} />} />
         <Route path='/product/:uid' render={(props) => <ProductPage {...props} />} />
