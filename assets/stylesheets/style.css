@@ -390,6 +390,7 @@ li > a:only-child:after {
 }
 
 .main-banner {
+    background: url(../images/main-banner.jpg)no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -400,12 +401,6 @@ li > a:only-child:after {
 }
 
 .main-banner.inner {
-    background: url(../images/main-banner.jpg)no-repeat center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-    background-size: cover;
     position: relative;
     height: 20em;
 }
@@ -1420,7 +1415,7 @@ a.move-top span {
         width: 100%;
     }
     .main-banner {
-        height: 25em;
+        height: 28em;
     }
     .banner-info {
         padding: 9em 0 0em 1em;
@@ -1456,7 +1451,7 @@ a.move-top span {
         width: 68%;
     }
     .main-banner {
-        height: 23em;
+        height: 26em;
     }
     .item-info-product h4 a {
         font-size: 14px;
