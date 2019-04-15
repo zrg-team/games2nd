@@ -199,7 +199,11 @@ class ProductDetail extends React.Component {
         <ProductInformation product={product} shop={shop} classes={classes} user={user} />
         <div className='row sub-para-w3layouts mt-5'>
           <br />
-          {reactElement ? reactElement.map(Item => Item) : null}
+          {reactElement
+            ? Array.isArray(reactElement)
+              ? reactElement.map(Item => Item)
+              : reactElement
+            : null}
         </div>
 
         {/* <h3 className='shop-sing'>Featured Products</h3>

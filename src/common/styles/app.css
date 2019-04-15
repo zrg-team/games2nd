@@ -301,3 +301,13 @@ html, body {
   align-items: center;
   display: flex;
 }
+
+.blog-content img {
+  width: 100%;
+  height: auto;
+}
+
+.blog-content image {
+  width: 100%;
+  height: auto;
+}
