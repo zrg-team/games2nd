@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
+import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { formatCurrency } from '../../../common/utils/format'
 import { back, next } from '../../../common/utils/navigation'
@@ -8,8 +9,8 @@ import { PLATFORMS } from '../models'
 import Button from '../../../libraries/CustomButtons/Button'
 import navbarsStyle from '../../../assets/jss/material-kit-react/views/componentsSections/navbarsStyle'
 
-const HtmlToReactParser = require('html-to-react').Parser
-const htmlToReactParser = new HtmlToReactParser()
+// const HtmlToReactParser = require('html-to-react').Parser
+// const htmlToReactParser = new HtmlToReactParser()
 
 function ProductInformation ({ user, product, shop, classes }) {
   let backgroundColor
@@ -62,7 +63,12 @@ function ProductInformation ({ user, product, shop, classes }) {
           <div className='share'>
             <h4>Purchase Product :</h4>
             <ul className='w3layouts_social_list list-unstyled'>
-              <li className='mx-2'>
+              <li
+                className='mx-2'
+                style={{
+                  marginLeft: '0px !important'
+                }}
+              >
                 <Button
                   color='twitter'
                   fullWidth
@@ -72,6 +78,9 @@ function ProductInformation ({ user, product, shop, classes }) {
                     }
                     const message = `I'm interested in ${product.name} - ${formatCurrency(product.price)} VND. ID: ${product.uid}`
                     next(`/profile/${shop.uid}`, { message })
+                  }}
+                  style={{
+                    marginLeft: 0
                   }}
                 >
                   <i
@@ -85,7 +94,12 @@ function ProductInformation ({ user, product, shop, classes }) {
                   Buy Now
                 </Button>
               </li>
-              <li className='mx-2'>
+              <li
+                className='mx-2'
+                style={{
+                  marginLeft: '0px !important'
+                }}
+              >
                 {shop.facebookID
                   ? <Button
                     color='facebook'
@@ -160,50 +174,56 @@ class ProductDetail extends React.Component {
       back()
     }
   }
+  renderLoading () {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          height: '100%'
+        }}
+      >
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            backgroundColor: '#000',
+            opacity: 0.25,
+            position: 'absolute'
+          }}
+        />
+        <Lottie
+          options={{
+            animationData: require('../../../assets/animations/loading-page.json')
+          }}
+          width={120}
+          height={120}
+        />
+      </div>
+    )
+  }
   render () {
     const { classes, user } = this.props
     const { product = {}, ready, shop } = this.state
     if (!ready) {
-      return (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
-            height: '100%'
-          }}
-        >
-          <div
-            style={{
-              width: '100%',
-              height: '100%',
-              backgroundColor: '#000',
-              opacity: 0.25,
-              position: 'absolute'
-            }}
-          />
-          <Lottie
-            options={{
-              animationData: require('../../../assets/animations/loading-page.json')
-            }}
-            width={120}
-            height={120}
-          />
-        </div>
-      )
+      this.renderLoading()
     }
-    const reactElement = htmlToReactParser.parse(product.description || '')
+    // const reactElement = htmlToReactParser.parse(product.description || '')
     return (
       <div className='left-ads-display col-lg-12'>
         <ProductInformation product={product} shop={shop} classes={classes} user={user} />
         <div className='row sub-para-w3layouts mt-5'>
           <br />
-          {reactElement
+          {/* {reactElement
             ? Array.isArray(reactElement)
               ? reactElement.map(Item => Item)
               : reactElement
-            : null}
+            : null} */}
+          <FroalaEditorView
+            model={product.description}
+          />
         </div>
 
         {/* <h3 className='shop-sing'>Featured Products</h3>

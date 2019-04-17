@@ -25,7 +25,7 @@ class ProductPage extends React.Component {
         </ol>
         <section className='ab-info-main py-md-5 py-4'>
           <div className='container py-md-3'>
-            <div className='row'>
+            <div className='row shopping-container'>
               <SearchPanel />
               <div className='left-ads-display col-lg-8'>
                 <ProductDetail match={this.props.match} />

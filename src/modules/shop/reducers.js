@@ -11,7 +11,8 @@ const defaultState = {
   totalPage: 0,
   search: null,
   searchMode: false,
-  presents: {}
+  presents: {},
+  deals: []
 }
 
 const handlers = {
@@ -50,6 +51,10 @@ const handlers = {
   [actions.setPresentInfo]: (state, action) => ({
     ...state,
     presents: action.payload
+  }),
+  [actions.setGreatDeals]: (state, action) => ({
+    ...state,
+    deals: action.payload
   })
 }
 

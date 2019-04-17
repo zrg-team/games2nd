@@ -24,6 +24,7 @@ class Blogs extends React.Component {
               src={item.banner}
               style={{
                 height: 200,
+                width: '100%',
                 objectFit: 'cover'
               }}
               alt='' />
@@ -66,17 +67,14 @@ class Blogs extends React.Component {
   async onLoadMore () {
     const { offset, loading } = this.state
     const { getBlogs } = this.props
-    console.log('>>>>>>>start')
     if (loading) {
       return
     }
     this.setState({
       loading: true
     })
-    console.log('>>>>>>>over')
     const result = await getBlogs(offset)
     this.time++
-    console.log('>>>>>>>', result)
     if (result) {
       this.setState({
         loading: false,

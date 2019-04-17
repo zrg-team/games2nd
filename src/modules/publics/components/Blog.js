@@ -1,9 +1,10 @@
 import React from 'react'
+import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView'
 import { back } from '../../../common/utils/navigation'
 import Lottie from '../../../libraries/Lottie'
 
-const HtmlToReactParser = require('html-to-react').Parser
-const htmlToReactParser = new HtmlToReactParser()
+// const HtmlToReactParser = require('html-to-react').Parser
+// const htmlToReactParser = new HtmlToReactParser()
 
 class Blog extends React.Component {
   constructor (props) {
@@ -63,17 +64,20 @@ class Blog extends React.Component {
         </div>
       )
     }
-    const reactElement = htmlToReactParser.parse(blog.content || '')
+    // const reactElement = htmlToReactParser.parse(blog.content || '')
     return (
       <section class='ab-info-main py-md-5'>
         <div class='container py-md-3'>
           <h3 class='tittle text-center mb-lg-5 mb-3'> {blog.title}</h3>
           <div class='speak px-lg-5 blog-content' style={{ overflowX: 'hidden' }}>
-            {reactElement
+            <FroalaEditorView
+              model={blog.content}
+            />
+            {/* {reactElement
               ? Array.isArray(reactElement)
                 ? reactElement.map(Item => Item)
                 : reactElement
-              : null}
+              : null} */}
           </div>
         </div>
       </section>

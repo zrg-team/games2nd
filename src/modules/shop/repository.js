@@ -126,3 +126,26 @@ export const addProduct = async (data) => {
     return true
   })
 }
+
+export const getGreatDeals = async () => {
+  try {
+    const data = []
+    const result = await firebase.db
+      .collection(`deals`)
+      .orderBy('time', 'desc')
+      .get()
+    if (result && !result.empty) {
+      result.forEach((doc) => {
+        const item = doc.data()
+        data.push({
+          ...item,
+          uid: doc.id,
+          id: doc.id
+        })
+      })
+    }
+    return data
+  } catch (err) {
+    console.log('err', err)
+  }
+}

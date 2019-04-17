@@ -74,7 +74,7 @@ class HeaderStore extends React.Component {
                   onClick={() => {
                     this.goto('/blogs')
                   }}
-                ><p>BLOG</p></li>
+                ><p>BLOGS</p></li>
                 {user
                   ? (<li
                     onClick={() => this.goto('/room')}
@@ -105,6 +105,7 @@ class HeaderStore extends React.Component {
           <div className='ban-buttons'>
             {presents.trendingOfWeek
               ? <p
+                style={{ marginTop: 5 }}
                 onClick={() => {
                   next('/shop', {
                     name: presents.trendingOfWeek.title
@@ -115,6 +116,7 @@ class HeaderStore extends React.Component {
               : null
             }
             <p
+              style={{ marginTop: 5 }}
               onClick={() => this.goto('/shop')}
               className='btn'
             >Shop Now</p>

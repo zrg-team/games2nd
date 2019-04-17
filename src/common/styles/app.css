@@ -303,11 +303,11 @@ html, body {
 }
 
 .blog-content img {
-  width: 100%;
+  width: 100% !important;
   height: auto;
 }
 
 .blog-content image {
-  width: 100%;
+  width: 100% !important;
   height: auto;
 }

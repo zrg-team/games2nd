@@ -1,5 +1,7 @@
 import React from 'react'
 import { LIMIT, PLATFORMS, PRICE_RANGES } from '../models'
+import { formatCurrency } from '../../../common/utils/format'
+import { next } from '../../../common/utils/navigation'
 
 class SearchPanel extends React.Component {
   constructor (props) {
@@ -15,7 +17,8 @@ class SearchPanel extends React.Component {
     this.searchName = this.searchName.bind(this)
   }
   componentDidMount () {
-    const { location } = this.props
+    const { location, getGreatDeals } = this.props
+    getGreatDeals()
     if (location && location.state && location.state.platform) {
       this.onSelectPlatform({
         target: {
@@ -84,6 +87,7 @@ class SearchPanel extends React.Component {
     }
   }
   render () {
+    const { deals = [] } = this.props
     const { price = {}, name, platform } = this.state
     return (
       <div className='side-bar col-lg-4'>
@@ -197,60 +201,30 @@ class SearchPanel extends React.Component {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className='deal-leftmk left-side'>
           <h3 className='sear-head'>Special Deals</h3>
-          <div className='special-sec1 row mb-3'>
-            <div className='img-deals col-md-4'>
-              <img src='images/s4.jpg' className='img-fluid' alt='' />
-            </div>
-            <div className='img-deal1 col-md-4'>
-              <h3>Shuberry Heels</h3>
-              <a href='shop-single.html'>$180.00</a>
-            </div>
-
-          </div>
-          <div className='special-sec1 row'>
-            <div className='img-deals col-md-4'>
-              <img src='images/s2.jpg' className='img-fluid' alt='' />
-            </div>
-            <div className='img-deal1 col-md-8'>
-              <h3>Chikku Loafers</h3>
-              <a href='shop-single.html'>$99.00</a>
-            </div>
-
-          </div>
-          <div className='special-sec1 row my-3'>
-            <div className='img-deals col-md-4'>
-              <img src='images/s1.jpg' className='img-fluid' alt='' />
-            </div>
-            <div className='img-deal1 col-md-8'>
-              <h3>Bella Toes</h3>
-              <a href='shop-single.html'>$165.00</a>
-            </div>
-
-          </div>
-          <div className='special-sec1 row'>
-            <div className='img-deals col-md-4'>
-              <img src='images/s5.jpg' className='img-fluid' alt='' />
-            </div>
-            <div className='img-deal1 col-md-8'>
-              <h3>Red Bellies</h3>
-              <a href='shop-single.html'>$225.00</a>
-            </div>
-
-          </div>
-          <div className='special-sec1 row mt-3'>
-            <div className='img-deals col-md-4'>
-              <img src='images/s3.jpg' className='img-fluid' alt='' />
-            </div>
-            <div className='img-deal1 col-md-8'>
-              <h3>(SRV) Sneakers</h3>
-              <a href='shop-single.html'>$169.00</a>
-            </div>
-
-          </div>
-        </div> */}
+          {deals.map(item => {
+            return (
+              <div
+                className='special-sec1 row mb-3 great-deal-container'
+                onClick={() => {
+                  next(`/product/${item.ref}`)
+                }}
+              >
+                <div className='img-deals col-md-4'>
+                  <img
+                    src={item.banner} className='img-fluid great-deal-img'
+                    alt='' />
+                </div>
+                <div className='img-deal1 col-md-4'>
+                  <h3>{item.name}</h3>
+                  <p >{formatCurrency(item.price)} VND</p>
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }
