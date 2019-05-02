@@ -3,10 +3,11 @@ import { useSpring, animated } from 'react-spring'
 import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { formatCurrency } from '../../../common/utils/format'
-import { back, next } from '../../../common/utils/navigation'
+import { next } from '../../../common/utils/navigation'
 import Lottie from '../../../libraries/Lottie'
 import { PLATFORMS } from '../models'
 import Button from '../../../libraries/CustomButtons/Button'
+import Notification from '../../../common/components/widgets/Notification'
 import navbarsStyle from '../../../assets/jss/material-kit-react/views/componentsSections/navbarsStyle'
 
 // const HtmlToReactParser = require('html-to-react').Parser
@@ -44,14 +45,14 @@ function ProductInformation ({ user, product, shop, classes }) {
       </div>
       <div className='desc1-right col-md-8 pl-lg-4'>
         <h3 className='shop-sing' style={{ marginTop: '0' }}>{product.name}</h3>
-        <h5>{formatCurrency(product.price)} {/* <span>599</span> */} VND</h5>
+        <h5>{formatCurrency(product.price || 0)} {/* <span>599</span> */} VND</h5>
         <div className='available mt-3'>
           {/* <form action='#' method='post' className='w3layouts-newsletter'>
             <input type='email' name='Email' placeholder='Enter your email...' required='' />
             <button className='btn1'>Check</button>
 
           </form> */}
-          <span style={{ backgroundColor }} className='product-new-top'>{PLATFORMS[product.platform]}</span>
+          <span style={{ backgroundColor }} className='product-new-top'>{PLATFORMS[product.platform] || 'Platform'}</span>
           <br />
           {product.isNew ? <span className='product-new-top'>New</span> : null}
           <br />
@@ -64,13 +65,10 @@ function ProductInformation ({ user, product, shop, classes }) {
             <h4>Purchase Product :</h4>
             <ul className='w3layouts_social_list list-unstyled'>
               <li
-                className='mx-2'
-                style={{
-                  marginLeft: '0px !important'
-                }}
+                className='mx-2 no-margin-left'
               >
                 <Button
-                  color='twitter'
+                  color='success'
                   fullWidth
                   onClick={() => {
                     if (!user || !user.uid) {
@@ -95,10 +93,7 @@ function ProductInformation ({ user, product, shop, classes }) {
                 </Button>
               </li>
               <li
-                className='mx-2'
-                style={{
-                  marginLeft: '0px !important'
-                }}
+                className='mx-2 no-margin-left'
               >
                 {shop.facebookID
                   ? <Button
@@ -120,6 +115,29 @@ function ProductInformation ({ user, product, shop, classes }) {
                       }
                     />{' '}
                     Facebook
+                  </Button>
+                  : null}
+              </li>
+              <li
+                className='mx-2 no-margin-left'
+              >
+                {shop.facebookID
+                  ? <Button
+                    color='twitter'
+                    onClick={() => {
+                      window.open(`https://www.messenger.com/t/${shop.facebookID}`, '_blank')
+                    }}
+                    fullWidth
+                  >
+                    <i
+                      className={
+                        classes.socialIcons +
+                        ' ' +
+                        classes.marginRight5 +
+                        ' fa fa-facebook'
+                      }
+                    />{' '}
+                    Messenger
                   </Button>
                   : null}
               </li>
@@ -148,10 +166,11 @@ class ProductDetail extends React.Component {
     this.state = {
       ready: false,
       product: {},
-      shop: {}
+      shop: {},
+      uid: ''
     }
   }
-  async componentDidMount () {
+  async getProductInformation () {
     const { user, uid, location, getProduct, getShopInformation } = this.props
     let product = {}
     let shop = {}
@@ -164,14 +183,33 @@ class ProductDetail extends React.Component {
       if (user && user.uid) {
         shop = await getShopInformation(product.user)
       }
-      return this.setState({
+      this.setState({
+        uid,
         shop,
         product,
         ready: true
       })
     } catch (error) {
-      console.log('error', error)
-      back()
+      Notification.error('Sync product information error !')
+      return null
+    }
+  }
+  static getDerivedStateFromProps ({ uid }, { uid: oldUid, ...rest }) {
+    if (uid !== oldUid) {
+      return {
+        ...rest,
+        ready: false
+      }
+    }
+    return null
+  }
+  componentDidMount () {
+    this.getProductInformation()
+  }
+  async componentDidUpdate ({ uid: oldUid }) {
+    const { uid, ready } = this.props
+    if (uid !== oldUid && !ready) {
+      this.getProductInformation()
     }
   }
   renderLoading () {
@@ -208,7 +246,7 @@ class ProductDetail extends React.Component {
     const { classes, user } = this.props
     const { product = {}, ready, shop } = this.state
     if (!ready) {
-      this.renderLoading()
+      return this.renderLoading()
     }
     // const reactElement = htmlToReactParser.parse(product.description || '')
     return (

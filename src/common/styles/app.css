@@ -309,5 +309,15 @@ html, body {
 
 .blog-content image {
   width: 100% !important;
-  height: auto;
+  height: auto !important;
+}
+
+.blog-content iframe {
+  width: 850px !important;
+  height: 500px !important;
+  max-width: 100% !important;
+}
+
+.no-margin-left {
+  margin-left: 0px !important;
 }

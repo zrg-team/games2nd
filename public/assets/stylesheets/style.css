@@ -101,6 +101,7 @@ nav {
 
 
 #logo p {
+    cursor: pointer;
     float: left;
     display: initial;
     margin: 0;

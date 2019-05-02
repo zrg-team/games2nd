@@ -21,7 +21,7 @@ class ShopingPage extends React.Component {
           >
             <a>Home</a>
           </li>
-          <li className='breadcrumb-item active'>Shopping Page</li>
+          <li className='breadcrumb-item active'>Shopping</li>
         </ol>
         <section className='ab-info-main py-md-5 py-4'>
           <div className='container py-md-3'>

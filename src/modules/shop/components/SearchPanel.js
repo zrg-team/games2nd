@@ -9,7 +9,7 @@ class SearchPanel extends React.Component {
     this.state = {
       name: '',
       price: {},
-      platform: '',
+      platform: ''
     }
     this.onSelectPriceRange = this.onSelectPriceRange.bind(this)
     this.onSelectPlatform = this.onSelectPlatform.bind(this)
@@ -50,7 +50,7 @@ class SearchPanel extends React.Component {
       price: price.key === lastPrice.key
         ? {} : price
     }, async () => {
-        const { price } = this.state
+      const { price } = this.state
       const { searchProducts, getProducts } = this.props
       if (price && Object.keys(price).length) {
         await searchProducts(LIMIT, undefined, { price })
@@ -158,7 +158,7 @@ class SearchPanel extends React.Component {
                     checked={price.key === item.key}
                     onChange={this.onSelectPriceRange}
                     className='checked' />
-                  <label htmlFor={item.key} style={{ cursor: 'pointer', paddingLeft : 10}} className='span'>{item.label}</label>
+                  <label htmlFor={item.key} style={{ cursor: 'pointer', paddingLeft: 10 }} className='span'>{item.label}</label>
                 </li>
               )
             })}
@@ -227,7 +227,7 @@ class SearchPanel extends React.Component {
                 key={item.id}
                 className='special-sec1 row mb-3 great-deal-container'
                 onClick={() => {
-                  next(`/product/${item.ref}`)
+                  next(`/product/${item.ref}`, { product: null })
                 }}
               >
                 <div className='img-deals'>
