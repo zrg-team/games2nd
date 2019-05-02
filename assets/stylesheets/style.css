@@ -101,6 +101,7 @@ nav {
 
 
 #logo p {
+    cursor: pointer;
     float: left;
     display: initial;
     margin: 0;
@@ -629,6 +630,7 @@ span.money {
     margin: 1em 0 0 0;
     padding: 1em 0 0 0;
     border-top: 1px solid #ddd;
+    cursor: pointer;
 }
 
 ul.stars li {
@@ -758,6 +760,7 @@ ul.list-unstyled.w3layouts-icons.clients li span:hover {
 /*-- //testimonials --*/
 .men-thumb-item{
    position: relative;
+   cursor: pointer;
 }
 .item-info-product h4 {
     margin-top: 0.5em;
@@ -802,6 +805,7 @@ li.breadcrumb-item a {
 
 .img-deal1 {
     padding: 0;
+    flex-grow: 1;
 }
 
 .img-deal1 h3 {
@@ -811,7 +815,9 @@ li.breadcrumb-item a {
         text-transform: uppercase;
     }
     
-    
+.img-deal1 h3:hover {
+    color: cornflowerblue;
+} 
 .img-deal1 a {
     font-size: 14px;
     color: #6d6c6c;
@@ -822,10 +828,12 @@ li.breadcrumb-item a {
 }
 
 .great-deal-container {
-    background-color: #FFFFFF;
     padding-bottom: 10px;
     padding-top: 10px;
-    border-radius: 3px
+    display: flex;
+    border-bottom: 1px solid darkgray;    
+    cursor: pointer;
+    justify-content: space-between;
 }
 
 ul.w3layouts-box-list li {
@@ -835,6 +843,7 @@ ul.w3layouts-box-list li {
     color: #8c9398;
     letter-spacing: 1px;
     font-size: 0.9em;
+    cursor: pointer;
 }
 .grid-img-right{
 background: url(../images/single.jpg)no-repeat center;
@@ -1118,6 +1127,9 @@ h4.sub-con-fo {
     letter-spacing: 1px;
 }
 
+.img-deals {
+    padding: 0 15px;
+}
 .footer-grid_section_w3layouts li a:hover {
     opacity: 0.8;
 }

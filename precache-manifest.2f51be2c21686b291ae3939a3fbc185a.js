@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/static/media/bg2.84378183.jpg"
   },
   {
-    "revision": "5eab30e7c8d5341a3a9f",
-    "url": "/static/css/main.77835588.chunk.css"
+    "revision": "89dba6d99d56eea9a578",
+    "url": "/static/css/main.cd241846.chunk.css"
   },
   {
     "revision": "fdfcfda2d9b1bf31db52",
@@ -16,8 +16,8 @@ self.__precacheManifest = [
     "url": "/static/media/no-image-icon.a4d1b5ae.png"
   },
   {
-    "revision": "4d0e548801ad11129a64",
-    "url": "/static/js/2.4d0e5488.chunk.js"
+    "revision": "06129533f97e39306c7a",
+    "url": "/static/js/2.06129533.chunk.js"
   },
   {
     "revision": "f1d71f777331fd7e3de116edf4ee3b67",
@@ -32,8 +32,8 @@ self.__precacheManifest = [
     "url": "/static/media/bg.e5241971.jpg"
   },
   {
-    "revision": "5eab30e7c8d5341a3a9f",
-    "url": "/static/js/main.5eab30e7.chunk.js"
+    "revision": "89dba6d99d56eea9a578",
+    "url": "/static/js/main.89dba6d9.chunk.js"
   },
   {
     "revision": "e76de24b6d8ab5e920bb4d49241ad15f",
@@ -56,11 +56,11 @@ self.__precacheManifest = [
     "url": "/static/media/chat-icon.3e109908.png"
   },
   {
-    "revision": "4d0e548801ad11129a64",
+    "revision": "06129533f97e39306c7a",
     "url": "/static/css/2.d67c03fe.chunk.css"
   },
   {
-    "revision": "c8c41904a8dbc343f5254b5a1f10bd41",
+    "revision": "e829a61fd14673022c1af017aaef3069",
     "url": "/index.html"
   }
 ];
