@@ -9,7 +9,7 @@ class SearchPanel extends React.Component {
     this.state = {
       name: '',
       price: {},
-      platform: ''
+      platform: '',
     }
     this.onSelectPriceRange = this.onSelectPriceRange.bind(this)
     this.onSelectPlatform = this.onSelectPlatform.bind(this)
@@ -33,6 +33,12 @@ class SearchPanel extends React.Component {
       }, () => {
         this.searchName()
       })
+    } else if (location && location.state && location.state.price) {
+      this.onSelectPriceRange({
+        target: {
+          value: location.state.price.key
+        }
+      })
     }
   }
   onSelectPriceRange (e) {
@@ -44,10 +50,13 @@ class SearchPanel extends React.Component {
       price: price.key === lastPrice.key
         ? {} : price
     }, async () => {
-      const { price } = this.state
+        const { price } = this.state
       const { searchProducts, getProducts } = this.props
       if (price && Object.keys(price).length) {
         await searchProducts(LIMIT, undefined, { price })
+        if (this.props.location.pathname !== '/shop') {
+          next('/shop', { price })
+        }
       } else {
         await getProducts(1, LIMIT)
       }
@@ -65,6 +74,9 @@ class SearchPanel extends React.Component {
       const { searchProducts, getProducts } = this.props
       if (platform && `${platform}`.trim()) {
         await searchProducts(LIMIT, undefined, { platform })
+        if (this.props.location.pathname !== '/shop') {
+          next('/shop', { platform })
+        }
       } else {
         await getProducts(1, LIMIT)
       }
@@ -82,6 +94,9 @@ class SearchPanel extends React.Component {
     const { searchProducts, getProducts } = this.props
     if (name && `${name}`.trim()) {
       await searchProducts(LIMIT, undefined, { name })
+      if (this.props.location.pathname !== '/shop') {
+        next('/shop', { name })
+      }
     } else {
       await getProducts(1, LIMIT)
     }
@@ -119,11 +134,12 @@ class SearchPanel extends React.Component {
                 <li key={key}>
                   <input
                     value={key}
-                    type='checkbox'
+                    id={PLATFORMS[key]}
+                    type='radio'
                     checked={platform === key}
                     onChange={this.onSelectPlatform}
                     className='checked' />
-                  <span style={{ paddingLeft: 10 }} className='span'>{PLATFORMS[key]}</span>
+                  <label htmlFor={PLATFORMS[key]} style={{ cursor: 'pointer', paddingLeft: 10 }} className='span'>{PLATFORMS[key]}</label>
                 </li>
               )
             })}
@@ -137,11 +153,12 @@ class SearchPanel extends React.Component {
                 <li key={item.key}>
                   <input
                     value={item.key}
-                    type='checkbox'
+                    id={item.key}
+                    type='radio'
                     checked={price.key === item.key}
                     onChange={this.onSelectPriceRange}
                     className='checked' />
-                  <span style={{ paddingLeft: 10 }} className='span'>{item.label}</span>
+                  <label htmlFor={item.key} style={{ cursor: 'pointer', paddingLeft : 10}} className='span'>{item.label}</label>
                 </li>
               )
             })}
@@ -207,17 +224,18 @@ class SearchPanel extends React.Component {
           {deals.map(item => {
             return (
               <div
+                key={item.id}
                 className='special-sec1 row mb-3 great-deal-container'
                 onClick={() => {
                   next(`/product/${item.ref}`)
                 }}
               >
-                <div className='img-deals col-md-4'>
+                <div className='img-deals'>
                   <img
                     src={item.banner} className='img-fluid great-deal-img'
                     alt='' />
                 </div>
-                <div className='img-deal1 col-md-4'>
+                <div className='img-deal1'>
                   <h3>{item.name}</h3>
                   <p >{formatCurrency(item.price)} VND</p>
                 </div>
