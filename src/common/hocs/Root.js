@@ -11,6 +11,7 @@ import { requestMessageToken } from '../utils/notifications'
 import Notification from '../components/widgets/Notification'
 import { setUserInformation, setNotification } from '../../modules/user/actions'
 import { getUser, userInformationListener, notificationListener } from '../../modules/user/repository'
+import Button from '../../libraries/CustomButtons/Button'
 import MainPage from './MainPage'
 
 export default class Root extends Component {
@@ -37,6 +38,19 @@ export default class Root extends Component {
     try {
       await locate()
       onAuthenticationChanged(this.authenticationChange)
+      window.addEventListener('newContentAvailable', () => {
+        Notification.actions('New version available.', [
+          <Button
+            color='info'
+            size='sm'
+            onClick={() => {
+              window.location.reload(window.location.href)
+            }}
+          >
+            RELOAD
+          </Button>
+        ], { duration: 24000 })
+      })
     } catch (error) {
       console.log('Fatal Error. Cannot Initialize.', error)
     }

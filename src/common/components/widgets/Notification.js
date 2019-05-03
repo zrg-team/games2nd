@@ -70,11 +70,12 @@ class ConsecutiveSnackbars extends React.Component {
     instanceNotification = null
   }
 
-  show = (message, variant) => {
+  show = (message, variant, params = {}) => {
     this.queue.push({
       message,
       variant,
       key: new Date().getTime(),
+      ...params
     });
     if (this.state.open) {
       // immediately begin dismissing current message
@@ -107,7 +108,7 @@ class ConsecutiveSnackbars extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { message, key, variant } = this.state.messageInfo;
+    const { message, key, variant, actions = [], duration = 5000 } = this.state.messageInfo;
     const Icon = variantIcon[variant]
 
     return (
@@ -118,7 +119,7 @@ class ConsecutiveSnackbars extends React.Component {
           horizontal: 'left',
         }}
         open={this.state.open}
-        autoHideDuration={5000}
+        autoHideDuration={duration}
         onClose={this.handleClose}
         onExited={this.handleExited}
         ContentProps={{
@@ -138,6 +139,7 @@ class ConsecutiveSnackbars extends React.Component {
             </span>
           }
           action={[
+            ...actions,
             <IconButton
               key='close'
               aria-label='Close'
@@ -174,6 +176,9 @@ export default {
   },
   warning (message) {
     instanceNotification && instanceNotification.show(message, 'warning')
+  },
+  actions (message, actions, params) {
+    instanceNotification && instanceNotification.show(message, 'success', { actions, ...params })
   },
   hide () {
     instanceNotification && instanceNotification.handleClose(null, null)
