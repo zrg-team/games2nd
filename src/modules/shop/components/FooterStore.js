@@ -159,7 +159,15 @@ class FooterStore extends React.Component {
                 <p className='col-md-10'>© 2019 Games. All rights reserved | Design by
                             <a href='http://w3layouts.com'> W3layouts.</a>
                 </p>
-                <a href='#' className='move-top text-right col-md-2'><span className='fa fa-long-arrow-up' aria-hidden='true' /></a>
+                <p
+                  onClick={() => {
+                    const refContainer = document.getElementById('root')
+                    refContainer.scrollTop = 0
+                  }}
+                  className='move-top text-right col-md-2'
+                >
+                  <span className='fa fa-long-arrow-up' aria-hidden='true' />
+                </p>
               </div>
             </div>
           </div>
