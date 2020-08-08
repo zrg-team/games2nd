@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "843781834b1db2908f08d921c6460c81",
-    "url": "/games2nd/static/media/bg2.84378183.jpg"
+    "revision": "e52419719dd0c4c8b172136f0b625008",
+    "url": "/games2nd/static/media/bg.e5241971.jpg"
   },
   {
-    "revision": "e6020e8c45892c07e194",
+    "revision": "f3dabdecb3244f77485a",
     "url": "/games2nd/static/css/main.51b6239d.chunk.css"
   },
   {
@@ -16,24 +16,28 @@ self.__precacheManifest = [
     "url": "/games2nd/static/media/no-image-icon.a4d1b5ae.png"
   },
   {
-    "revision": "166223d048476684f521",
-    "url": "/games2nd/static/js/2.166223d0.chunk.js"
+    "revision": "1d299bff6b401b6d6144",
+    "url": "/games2nd/static/js/2.1d299bff.chunk.js"
   },
   {
     "revision": "f1d71f777331fd7e3de116edf4ee3b67",
     "url": "/games2nd/static/media/avatar.f1d71f77.jpg"
   },
   {
+    "revision": "b2f7847d7453e7dada780ef130188912",
+    "url": "/games2nd/static/media/chat-icon.b2f7847d.png"
+  },
+  {
     "revision": "6684f3589c924acf182ad5dccccba156",
     "url": "/games2nd/static/media/no-image.6684f358.jpg"
   },
   {
-    "revision": "e52419719dd0c4c8b172136f0b625008",
-    "url": "/games2nd/static/media/bg.e5241971.jpg"
+    "revision": "f3dabdecb3244f77485a",
+    "url": "/games2nd/static/js/main.f3dabdec.chunk.js"
   },
   {
-    "revision": "e6020e8c45892c07e194",
-    "url": "/games2nd/static/js/main.e6020e8c.chunk.js"
+    "revision": "843781834b1db2908f08d921c6460c81",
+    "url": "/games2nd/static/media/bg2.84378183.jpg"
   },
   {
     "revision": "e76de24b6d8ab5e920bb4d49241ad15f",
@@ -52,15 +56,11 @@ self.__precacheManifest = [
     "url": "/games2nd/static/media/profile.3d8833f6.jpg"
   },
   {
-    "revision": "3e10990804510b71d3754730e7614a8c",
-    "url": "/games2nd/static/media/chat-icon.3e109908.png"
+    "revision": "1d299bff6b401b6d6144",
+    "url": "/games2nd/static/css/2.92a597fc.chunk.css"
   },
   {
-    "revision": "166223d048476684f521",
-    "url": "/games2nd/static/css/2.d67c03fe.chunk.css"
-  },
-  {
-    "revision": "9cdce8316f6039f3d0b6f5aaf0d576b8",
+    "revision": "2e9d4f2356339630af470102443f0a86",
     "url": "/games2nd/index.html"
   }
 ];
